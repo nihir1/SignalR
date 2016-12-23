@@ -9,3 +9,4 @@ $.connection.myHub.client.annouce = function (message)
 {
     $('#welcome-messages').append(message + "<br/>");
 }
+
