@@ -1,7 +1,7 @@
 ﻿(function () {
 
     $("#click-me").on("click", function () {
-        myHub.server.getServerDateTime()
+        chat.server.getServerDateTime()
                       .done(function (data) {
                           writeToPage(data);
                       })
@@ -10,16 +10,16 @@
                       });
     });
 
-    var myHub = $.connection.myHub;
+    var chat = $.connection.chat;
     $.connection.hub.start()
                 .done(function () {
                     writeToPage("It Worked!");
-                    myHub.server.annouce("Connected!");
+                    chat.server.annouce("Connected!");
                   
                 })
                 .fail(function () { writeToPage("Failed! :("); })
 
-    myHub.client.annouce = function (message) {
+    chat.client.annouce = function (message) {
         writeToPage(message);
     }
 
