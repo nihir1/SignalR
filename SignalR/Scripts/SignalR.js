@@ -1,12 +1,19 @@
-﻿$.connection.hub.start()
-            .done(function () {
-                console.log("It Worked!");
-                $.connection.myHub.server.annouce("Connected!");
-            })
-            .fail(function () { alert("Failed"); })
+﻿(function () {
+    var myHub = $.connection.myHub;
+    $.connection.hub.start()
+                .done(function () {
+                    writeToPage("It Worked!");
+                    myHub.server.annouce("Connected!");
+                })
+                .fail(function () { writeToPage("Failed! :("); })
 
-$.connection.myHub.client.annouce = function (message)
-{
-    $('#welcome-messages').append(message + "<br/>");
-}
+    myHub.client.annouce = function (message) {
+        writeToPage(message);
+    }
+
+    var writeToPage = function (message) {
+        $('#welcome-messages').append(message + "<br/>");
+    }
+
+})()
 
