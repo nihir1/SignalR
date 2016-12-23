@@ -11,6 +11,11 @@ namespace SignalR
         public void Annouce(string message)
         {
             Clients.All.annouce(message);
+        }        
+
+        public DateTime GetServerDateTime()
+        {
+            return DateTime.Now;
         }
     }
 }

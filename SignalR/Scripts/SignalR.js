@@ -4,6 +4,13 @@
                 .done(function () {
                     writeToPage("It Worked!");
                     myHub.server.annouce("Connected!");
+                    myHub.server.getServerDateTime()
+                        .done(function (data) {
+                            writeToPage(data);
+                        })
+                        .fail(function (error) {
+                            writeToPage(error);
+                        });
                 })
                 .fail(function () { writeToPage("Failed! :("); })
 
